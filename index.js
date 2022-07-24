@@ -22,8 +22,8 @@ app.get("/", (req, res) => {
   res.json({ title: "Hello world" });
 });
 
-app.post("/", (_, res) => {
-  io.emit("new_post", "new post created");
+app.post("/", (req, res) => {
+  io.emit("new_post", { ...req.body });
   res.json({ status: 201 });
 });
 
